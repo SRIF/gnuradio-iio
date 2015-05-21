@@ -1,0 +1,91 @@
+\documentclass{acm_proc_article-sp}
+\usepackage{hyperref}
+%\usepackage{graphicx}
+
+\begin{document}
+\title{Demo: IIO Blocks for GnuRadio}
+\subtitle{[Extended Abstract]}
+
+\numberofauthors{1}
+
+\author{
+\alignauthor
+Paul Cercueil\\
+	\affaddr{Analog Devices Inc.}\\
+	\affaddr{Wilhelm-Wagenfeld-Strasse 6}\\
+	\affaddr{80807 Munich, Germany}\\
+	\email{paul.cercueil@analog.com}
+}
+
+\maketitle
+
+\keywords{Linux, IIO, SDR, GnuRadio}
+
+%\begin{abstract}
+%This is the abstract
+%\end{abstract}
+
+\section{The IIO subsystem of the Linux kernel}
+
+The Industrial Input / Output (IIO) framework of the Linux kernel has been in
+the upstream Linux kernels since 2011, and is responsible for handling sensors,
+converters, integrated transceivers and other real word I/O devices. It provides
+a hardware abstraction layer with a consistent API for the user space
+applications.
+
+As of today, the IIO framework consists of ~200 drivers, many supporting
+different devices. It supports discrete ADCs, DACs, VGAs, PLLs... which
+can be used to build a discrete SDR solution. It also supports integrated
+transceivers like the AD9361, found in many SDR products.
+
+\section{The IIO blocks for GnuRadio}
+
+GnuRadio\footnote{ \url{http://gnuradio.org}}
+is a free and open-source graphical programming environment, that can
+be used to design software-defined radios (SDR) using a large panel of signal
+processing blocks. It is widely used in hobbyist, academic, commercial and
+military environments to support real-world radio systems as well as research
+and development in wireless communications.
+
+Recently, Analog Devices created several new blocks for GnuRadio that can be
+used to stream samples from and to high-speed Industrial I/O (IIO)
+devices\footnote{ \url{https://github.com/analogdevicesinc/gnuradio}}.
+Adding a few signal processing
+blocks, it becomes very easy to create complex applications such as
+LTE or IEEE 802.11g OFDM receivers, radar processing, or just simple
+applications like wide-band FM transceivers.
+
+Those new GnuRadio blocks use the
+libiio\footnote{ \url{http://wiki.analog.com/resources/tools-software/linux-software/libiio}}
+library as their base; as a result,
+they inherit some features from the library, like the ability to connect
+remotely to the target platform over the network.
+
+This has several benefits, including the possibility to run them on other
+operating systems than Linux (including Windows), but it also permits to
+offload the heavy computations performed by GnuRadio to a more capable computer,
+in order to reach higher sample rates.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.25]{libiio.pdf}
+\caption{From the HW to GnuRadio with libiio}
+\end{figure}
+
+\section{Flowgraph example: 802.11g WiFi packet sniffer}
+
+This demo will focus on presenting the IIO blocks for GnuRadio; how they can be
+used, their functionalities, the controls they provide over the hardware.
+For this purpose, the demo will be a GnuRadio flowgraph that corresponds to a
+IEEE 802.11g (WiFi) packet sniffer, which has the advantage of showing a
+real-world use case of a fast (20 MHz sample rate) software defined radio
+application, while remaining relatively simple with only a handful of blocks.
+%This demo will use the unmodified
+%\texttt{gr-ieee802-11}\footnote{ \url{https://github.com/bastibl/gr-ieee802-11}}
+%blocks for GnuRadio.
+
+The demo will use a off-the-shelf low-cost FPGA development board (Zynq Zed)
+together with a AD-FMCOMMS3 (AD9361) FMC card.
+
+\balancecolumns
+\end{document}

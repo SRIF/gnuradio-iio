@@ -2,6 +2,8 @@
 \usepackage{hyperref}
 %\usepackage{graphicx}
 
+\interfootnotelinepenalty=1000
+
 \begin{document}
 \title{Demo: IIO Blocks for GNU Radio}
 \subtitle{[Extended Abstract]}
@@ -40,7 +42,7 @@ transceivers like the AD9361, found in many SDR products.
 
 \section{The IIO blocks for GNU Radio}
 
-GNU Radio\footnote{ \url{http://gnuradio.org}}
+GNU Radio\footnote{\url{http://gnuradio.org}}
 is a free and open-source graphical programming environment, that can
 be used to design software-defined radios (SDR) using a large panel of signal
 processing blocks. It is widely used in hobbyist, academic, commercial and
@@ -49,14 +51,14 @@ and development in wireless communications.
 
 Recently, Analog Devices created several new blocks for GNU Radio that can be
 used to stream samples from and to high-speed Industrial I/O (IIO)
-devices\footnote{ \url{https://github.com/analogdevicesinc/gnuradio}}.
+devices\footnote{\url{https://github.com/analogdevicesinc/gnuradio}}.
 Adding a few signal processing
 blocks, it becomes very easy to create complex applications such as
 LTE or IEEE 802.11g OFDM receivers, radar processing, or just simple
 applications like wide-band FM transceivers.
 
 Those new GNU Radio blocks use the
-libiio\footnote{ \url{http://wiki.analog.com/resources/tools-software/linux-software/libiio}}
+libiio\footnote{\url{http://wiki.analog.com/resources/tools-software/linux-software/libiio}}
 library as their base; as a result,
 they inherit some features from the library, like the ability to connect
 remotely to the target platform over the network.
@@ -81,7 +83,7 @@ IEEE 802.11g (WiFi) packet sniffer, which has the advantage of showing a
 real-world use case of a fast (20 MHz sample rate) software defined radio
 application, while remaining relatively simple with only a handful of blocks.
 %This demo will use the unmodified
-%\texttt{gr-ieee802-11}\footnote{ \url{https://github.com/bastibl/gr-ieee802-11}}
+%\texttt{gr-ieee802-11}\footnote{\url{https://github.com/bastibl/gr-ieee802-11}}
 %blocks for GNU Radio.
 
 The demo will use a off-the-shelf low-cost FPGA development board (Zynq Zed)

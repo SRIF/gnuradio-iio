@@ -57,6 +57,12 @@ blocks, it becomes very easy to create complex applications such as
 LTE or IEEE 802.11g OFDM receivers, radar processing, or just simple
 applications like wide-band FM transceivers.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.25]{libiio.pdf}
+\caption{From the HW to GNU Radio with libiio}
+\end{figure}
+
 Those new GNU Radio blocks use the
 libiio\footnote{\url{http://wiki.analog.com/resources/tools-software/linux-software/libiio}}
 library as their base; as a result,
@@ -67,12 +73,6 @@ This has several benefits, including the possibility to run them on other
 operating systems than Linux (including Windows), but it also permits to
 offload the heavy computations performed by GNU Radio to a more capable computer,
 in order to reach higher sample rates.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.25]{libiio.pdf}
-\caption{From the HW to GNU Radio with libiio}
-\end{figure}
 
 \section{Flowgraph example: 802.11g WiFi packet sniffer}
 

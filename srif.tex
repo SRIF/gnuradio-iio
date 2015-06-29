@@ -27,9 +27,9 @@ Paul Cercueil\\
 %This is the abstract
 %\end{abstract}
 
-\section{The IIO subsystem of the Linux kernel}
+\section{The IIO framework of the Linux kernel}
 
-The Industrial Input / Output (IIO) framework of the Linux kernel has been in
+The Industrial Input / Output (IIO) framework has been in
 the upstream Linux kernels since 2011, and is responsible for handling sensors,
 converters, integrated transceivers and other real word I/O devices. It provides
 a hardware abstraction layer with a consistent API for the user space
@@ -49,8 +49,8 @@ processing blocks. It is widely used in hobbyist, academic, commercial and
 military environments to support real-world radio systems as well as research
 and development in wireless communications.
 
-Recently, Analog Devices created several new blocks for GNU Radio that can be
-used to stream samples from and to high-speed Industrial I/O (IIO)
+Recently, Analog Devices Inc. (ADI) created several new blocks for GNU Radio
+that can be used to stream samples from and to high-speed IIO
 devices\footnote{\url{https://github.com/analogdevicesinc/gnuradio/tree/gr-iio}}.
 Adding a few signal processing
 blocks, it becomes very easy to create complex applications such as
@@ -63,18 +63,20 @@ applications like wide-band FM transceivers.
 \caption{From the HW to GNU Radio with libiio}
 \end{figure}
 
-Those new GNU Radio blocks use the
+These new GNU Radio blocks are built around ADI's
 libiio\footnote{\url{http://wiki.analog.com/resources/tools-software/linux-software/libiio}}
-library as their base; as a result,
-they inherit some features from the library, like the ability to connect
-remotely to the target platform over the network.
+library, which concentrates most of the complexity,
+supports all IIO devices and has built-in support
+for data streaming over the network.
 
-This has several benefits, including the possibility to run them on other
-operating systems than Linux (including Windows), but it also permits to
-offload the heavy computations performed by GNU Radio to a more capable computer,
-in order to reach higher sample rates.
+This one particular feature
+has several benefits; it allows the GNU Radio flowgraphs to run
+on other operating systems than Linux (including Windows),
+and on more capable computers than the development board
+where the IIO devices are attached, which is usually not
+suitable for high-performance and real-time data processing.
 
-\section{Flowgraph example: 802.11g WiFi packet sniffer}
+\section{Demo: 802.11g WiFi packet sniffer}
 
 This demo will focus on presenting the IIO blocks for GNU Radio; how they can be
 used, their functionalities, the controls they provide over the hardware.
